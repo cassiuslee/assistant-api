@@ -1,8 +1,15 @@
 package com.eterni.dimp.assistantapi.common;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serial;
 import java.io.Serializable;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ApiResult<T> implements Serializable {
 
     @Serial
@@ -11,15 +18,6 @@ public class ApiResult<T> implements Serializable {
     private Integer code;
     private String message;
     private T data;
-
-    public ApiResult() {
-    }
-
-    public ApiResult(Integer code, String message, T data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
 
     public static <T> ApiResult<T> success() {
         return new ApiResult<>(ResultCode.SUCCESS.getCode(), ResultCode.SUCCESS.getMessage(), null);
@@ -47,29 +45,5 @@ public class ApiResult<T> implements Serializable {
 
     public static <T> ApiResult<T> fail(ResultCode resultCode) {
         return new ApiResult<>(resultCode.getCode(), resultCode.getMessage(), null);
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
     }
 }

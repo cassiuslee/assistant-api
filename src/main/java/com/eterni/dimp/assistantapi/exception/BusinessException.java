@@ -1,9 +1,12 @@
 package com.eterni.dimp.assistantapi.exception;
 
+import com.eterni.dimp.assistantapi.common.ResultCode;
+import lombok.Getter;
 
 /**
  * @author cqkir
  */
+@Getter
 public class BusinessException extends RuntimeException {
 
     private final Integer code;
@@ -11,7 +14,7 @@ public class BusinessException extends RuntimeException {
 
     public BusinessException(String message) {
         super(message);
-        this.code = 500;
+        this.code = ResultCode.FAIL.getCode();
         this.message = message;
     }
 
@@ -21,8 +24,10 @@ public class BusinessException extends RuntimeException {
         this.message = message;
     }
 
-    public Integer getCode() {
-        return code;
+    public BusinessException(ResultCode resultCode) {
+        super(resultCode.getMessage());
+        this.code = resultCode.getCode();
+        this.message = resultCode.getMessage();
     }
 
     @Override
