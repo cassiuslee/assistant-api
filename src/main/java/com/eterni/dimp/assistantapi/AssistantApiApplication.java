@@ -3,6 +3,9 @@ package com.eterni.dimp.assistantapi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * @author cqkir
+ */
 @SpringBootApplication
 public class AssistantApiApplication {
 
