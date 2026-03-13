@@ -24,4 +24,5 @@ knife4j:
 
 logging:
   level:
+    root: info
     com.eterni.dimp.assistantapi: debug
